@@ -1,0 +1,21 @@
+const { admin } = require("./connection");
+
+module.exports = (sequelize, DataTypes) => {
+  
+    const admin = sequelize.define("admin", {
+      
+      name: {
+         type: DataTypes.STRING,
+         allowNull :false
+      },
+      username: {
+        type: DataTypes.STRING,
+        allowNull :false
+     },
+     password: {
+        type: DataTypes.STRING,
+        allowNull :false
+     }});  
+      return admin;
+  };
+

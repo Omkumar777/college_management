@@ -1,0 +1,39 @@
+const student = require('./student')
+
+
+module.exports = (sequelize, DataTypes) => {
+
+    const semesterOne = sequelize.define("semesterThree", {
+
+     
+       
+        mark1: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        mark2: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        mark3: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        mark4: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        mark5: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        mark6: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        modifiedBy :{
+            type : DataTypes.STRING
+        },
+    });
+    return semesterOne;
+};
