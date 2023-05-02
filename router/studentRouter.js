@@ -8,7 +8,7 @@ module.exports = app => {
     
     const router = require("express").Router();  
     router.post("/",admin.authentication, student.createStudent); 
-    router.get("/",student.authenticationStudent, student.getAllStudent);
+    router.get("/",admin.authentication, student.getAllStudent);
     router.get("/profile",mark.profile )
     router.get("/:id", student.getOneStudent);
     router.put("/:id",student.authenticationStudent, student.updateStudent); 

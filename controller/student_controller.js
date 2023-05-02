@@ -141,10 +141,10 @@ const authenticationStudent = async (req, res, next) => {
             return res.sendStatus(403);
         }
 
-        const data = await Student.findOne({ where: { username: user.username, password: user.password } })
+        const data = await Student.findOne({ where: { username: user.username } })
+        const pass = await bcrypt.compare(user.password , data.password)
 
-
-        if (data == null) {
+        if (data == null || !pass) {
             console.log(data);
             res.status(404).send("username or password is incorrect")
         }

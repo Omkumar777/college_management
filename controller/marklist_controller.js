@@ -15,7 +15,8 @@ const jwt = require("jsonwebtoken")
 const joi = require("joi");
 const path = require('path');
 const multer = require('multer');
-const xlsx = require("xlsx")
+const xlsx = require("xlsx");
+const bcrypt = require("bcrypt");
 
 
 
@@ -370,10 +371,12 @@ const profile = async (req, res,) => {
     }
     try {
 
-      const data = await Student.findOne({ where: { username: user.username, password: user.password } })
+      const data = await Student.findOne({ where: { username: user.username} })
+
+      const pass = await bcrypt.compare(user.password , data.password)
 
       
-      if (data == null) return res.status(404).json(format(null, 404, "username or password is incorrect"))
+      if (data == null || !pass) return res.status(404).json(format(null, 404, "username or password is incorrect"))
 
 
       const sem1 = await SemesterOne.findOne({ where: { studentId: data.id } })
